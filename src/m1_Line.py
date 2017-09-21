@@ -3,8 +3,8 @@ A simple   Line   class.
 NOTE: This is NOT rosegraphics -- it is your OWN Line class.
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Jing Lin.
+"""  # TODONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import math
 import m1t_test_Line as m1t
@@ -15,7 +15,7 @@ import m1t_test_Line as m1t
 ########################################################################
 
 # ----------------------------------------------------------------------
-# TODO: 2. With your instructor, READ THE INSTRUCTIONS
+# TODONE: 2. With your instructor, READ THE INSTRUCTIONS
 #   in file  m0_INSTRUCTIONS.txt, asking questions as needed.
 #   Once you understand the instructions, mark this TO DO as DONE.
 #
@@ -38,12 +38,12 @@ def main():
     a  TEST   function will not be called until you begin work
     on the code that it is testing.
     """
-    if m1t.is_implemented('__init__'):
-        run_test_init()
-    if m1t.is_implemented('clone'):
-        run_test_clone()
-    if m1t.is_implemented('reverse'):
-        run_test_reverse()
+    # if m1t.is_implemented('__init__'):
+    #     run_test_init()
+    # if m1t.is_implemented('clone'):
+    #     run_test_clone()
+    # if m1t.is_implemented('reverse'):
+    #     run_test_reverse()
     if m1t.is_implemented('slope'):
         run_test_slope()
     if m1t.is_implemented('length'):
@@ -217,7 +217,7 @@ class Line(object):
           :type end:   Point
         """
         # --------------------------------------------------------------
-        # TODO: 3.
+        # TODONE: 3.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -225,6 +225,8 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
+        self.start = start.clone()
+        self.end = end.clone()
 
     def __repr__(self):
         """
@@ -334,6 +336,9 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
+        p1 = self.start
+        p2 = self.end
+        return Line(p1, p2)
 
     def reverse(self):
         """
@@ -367,6 +372,10 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
+        temp = self.start
+        self.start = self.end
+        self.end = temp
+        return Line(self.start, self.end)
 
     def slope(self):
         """
@@ -403,6 +412,11 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
+        deltax = self.end.x - self.start.x
+        deltay = self.end.y - self.start.y
+        if deltax == 0:
+            return math.inf
+        return deltay/deltax
 
     def length(self):
         """
