@@ -225,14 +225,12 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
-        x = start.clone()
-        y = end.clone()
-        self.o_start = x
-        self.o_end = y
+
         self.start = start.clone()
         self.end = end.clone()
         self.count_clones = 0
-
+        self.o_start = self.start.clone()
+        self.o_end = self.end.clone()
 
     def __repr__(self):
         """
@@ -702,7 +700,7 @@ class Line(object):
             print(line2)  # Should print: Line[(0, 1), (10, 20)]
         """
         # --------------------------------------------------------------
-        # TODO: 13.
+        # TODONE: 13.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -710,7 +708,9 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
-        return Line(self.o_start,self.o_end)
+        self.start = self.o_start
+        self.end = self.o_end
+        return Line(self.start, self.end)
 
 ########################################################################
 # The TEST functions for the  Line  class begin here.
