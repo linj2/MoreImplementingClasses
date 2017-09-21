@@ -38,28 +38,28 @@ def main():
     a  TEST   function will not be called until you begin work
     on the code that it is testing.
     """
-    if m1t.is_implemented('__init__'):
-        run_test_init()
-    if m1t.is_implemented('clone'):
-        run_test_clone()
-    if m1t.is_implemented('reverse'):
-        run_test_reverse()
-    if m1t.is_implemented('slope'):
-        run_test_slope()
-    if m1t.is_implemented('length'):
-        run_test_length()
-    if m1t.is_implemented('get_number_of_clones'):
-        run_test_get_number_of_clones()
-    if m1t.is_implemented('line_plus'):
-        run_test_line_plus()
-    if m1t.is_implemented('line_minus'):
-        run_test_line_minus()
-    if m1t.is_implemented('midpoint'):
-        run_test_midpoint()
-    if m1t.is_implemented('is_parallel'):
-        run_test_is_parallel()
-    if m1t.is_implemented('reset'):
-        run_test_reset()
+    # if m1t.is_implemented('__init__'):
+    #     run_test_init()
+    # if m1t.is_implemented('clone'):
+    #     run_test_clone()
+    # if m1t.is_implemented('reverse'):
+    #     run_test_reverse()
+    # if m1t.is_implemented('slope'):
+    #     run_test_slope()
+    # if m1t.is_implemented('length'):
+    #     run_test_length()
+    # if m1t.is_implemented('get_number_of_clones'):
+    #     run_test_get_number_of_clones()
+    # if m1t.is_implemented('line_plus'):
+    #     run_test_line_plus()
+    # if m1t.is_implemented('line_minus'):
+    #     run_test_line_minus()
+    # if m1t.is_implemented('midpoint'):
+    #     run_test_midpoint()
+    # if m1t.is_implemented('is_parallel'):
+    #     run_test_is_parallel()
+    # if m1t.is_implemented('reset'):
+    #     run_test_reset()
 
 ########################################################################
 # Students:
@@ -340,10 +340,8 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
-        p1 = self.start
-        p2 = self.end
-        self.count_clones +=1
-        return Line(p1, p2)
+        self.count_clones += 1
+        return Line(self.start.clone(), self.end.clone())
 
     def reverse(self):
         """
@@ -417,11 +415,10 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
-        deltax = self.end.x - self.start.x
-        deltay = self.end.y - self.start.y
-        if deltax == 0:
+        delta = self.start.minus(self.end)
+        if delta.x == 0:
             return math.inf
-        return deltay/deltax
+        return delta.y/delta.x
 
     def length(self):
         """
